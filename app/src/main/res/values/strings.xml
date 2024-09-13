@@ -2,4 +2,20 @@
     <string name="app_name">TodoApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next">Next  >></string>
+    <string name="skip">Skip  >></string>
+    <string name="plan_it">PlanIt</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="create_your_timing">Create your timing!</string>
+    <string name="email">Email</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="password">Password</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="take_me_in">Take me in</string>
+    <string name="dont_have_an_account">Don\'\t have an account?</string>
+    <string name="register_me">Register me</string>
+    <string name="or">or</string>
+    <string name="google">Google</string>
+    <string name="facebook">Facebook</string>
 </resources>
