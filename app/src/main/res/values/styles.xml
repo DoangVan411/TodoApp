@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- create edit text style -->
+    <style name="CustomEditTextStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:padding">10dp</item> <!-- Khoảng cách giữa viền và văn bản bên trong -->
+        <item name="android:textColor">@android:color/black</item> <!-- Màu chữ (có thể tùy chỉnh theo nhu cầu) -->
+        <item name="android:textSize">16sp</item> <!-- Kích thước chữ (có thể tùy chỉnh theo nhu cầu) -->
+    </style>
+
+    <!-- create text view style -->
+    <style name="CustomTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
