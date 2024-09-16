@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id ("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt")
 }
 
 android {
@@ -56,4 +58,16 @@ dependencies {
     //Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    // ViewModel
+    implementation (libs.androidx.lifecycle.lifecycle.viewmodel.ktx2)
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+
+    // Room
+    implementation (libs.kotlinx.coroutines.core)
+    implementation (libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.room.runtime)
+    implementation (libs.androidx.room.ktx)
+    annotationProcessor(libs.androidx.room.compiler)
+    kapt (libs.androidx.room.compiler)
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.todoapp.constant.Constant
 import com.example.todoapp.R
@@ -31,20 +32,21 @@ class StartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentStartBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        viewPager = binding.viewPager
-
+        //gan gia tri cho cac list
         titles = listOf(Constant.TITLE_1, Constant.TITLE_2, Constant.TITLE_3)
         contents = listOf(Constant.CONTENT_1, Constant.CONTENT_2, Constant.CONTENT_3)
         images = listOf(R.drawable.start1, R.drawable.start2, R.drawable.start3)
         loadingImages = listOf(R.drawable.loading1, R.drawable.loading2, R.drawable.loading3)
 
+        //tao imageAdapter cho viewPager2
         imageAdapter = ImageAdapter(images)
 
-        //set up view pager 2
+        //set up viewpager2
+        viewPager = binding.viewPager
         setUpViewPager()
 
         return view
@@ -53,9 +55,18 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvNext.setOnClickListener {
-            moveToNextPage()
+        binding.apply {
+
+            tvNext.setOnClickListener {
+                moveToNextPage()
+            }
+
+            tvSkip.setOnClickListener {
+                findNavController().navigate(R.id.action_startFragment_to_loginFragment)
+            }
+
         }
+
     }
 
     private fun setUpViewPager() {
@@ -88,6 +99,9 @@ class StartFragment : Fragment() {
         if(currentPage < images.size - 1) {
             currentPage++
             viewPager.setCurrentItem(currentPage, true)
+        }
+        else if(currentPage == images.size - 1) {
+            findNavController().navigate(R.id.action_startFragment_to_loginFragment)
         }
     }
 
