@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.register.RegisterFragment">
+
+    <LinearLayout
+        android:id="@+id/layoutAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tvOr">
+
+        <ImageView
+            android:id="@+id/ivCheckBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_weight="1"
+
+            android:src="@drawable/checkbox"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/plan_it"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_blue"
+            android:layout_gravity="center"
+
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@id/ivCheckBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@id/ivCheckBox"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvLetMakeAnAccount"
+        android:layout_width="match_parent"
+
+        android:text="@string/let_make_an_account"
+        style="@style/CustomTextViewStyle"
+        android:textSize="25sp"
+        android:gravity="center"
+
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/layoutAppName"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <TextView
+        android:id="@+id/tvCreate"
+        android:layout_width="match_parent"
+
+        android:text="@string/create_your_timing"
+        style="@style/CustomTextViewStyle"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:gravity="center"
+
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintTop_toBottomOf="@id/tvLetMakeAnAccount"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:text="@string/user_name"
+        style="@style/CustomTextViewStyle"
+
+        android:layout_marginStart="25dp"
+
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/tvCreate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <EditText
+        android:id="@+id/etName"
+        android:hint="@string/enter_username"
+
+        style="@style/CustomEditTextStyle"
+
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:text="@string/email"
+        style="@style/CustomTextViewStyle"
+
+        android:layout_marginStart="25dp"
+
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/etName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:hint="@string/enter_your_email"
+
+        style="@style/CustomEditTextStyle"
+
+        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <TextView
+        android:id="@+id/tvPassword"
+        android:text="@string/password"
+        style="@style/CustomTextViewStyle"
+
+        android:layout_marginStart="25dp"
+
+        app:layout_constraintVertical_bias="0.08"
+        app:layout_constraintTop_toBottomOf="@id/etEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:hint="@string/enter_your_password"
+
+        style="@style/CustomEditTextStyle"
+        android:inputType="textPassword"
+
+        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@id/tvPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <TextView
+        android:id="@+id/tvConfirm"
+        android:text="@string/password"
+        style="@style/CustomTextViewStyle"
+
+        android:layout_marginStart="25dp"
+
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <EditText
+        android:id="@+id/etConfirm"
+        android:hint="@string/re_enter_your_password"
+
+        style="@style/CustomEditTextStyle"
+        android:inputType="textPassword"
+
+        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@id/tvConfirm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:text="@string/sign_up"
+        android:backgroundTint="@color/dark_blue"
+
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etConfirm"
+        app:layout_constraintBottom_toTopOf="@id/tvOr"/>
+
+    <LinearLayout
+        android:id="@+id/layoutLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRegister"
+        app:layout_constraintBottom_toTopOf="@id/tvOr">
+
+        <TextView
+            style="@style/CustomTextViewStyle"
+            android:text="@string/already_a_member"
+            android:textStyle="normal"/>
+
+        <TextView
+            android:id="@+id/tvLogin"
+
+            style="@style/CustomTextViewStyle"
+            android:text="@string/log_in"
+            android:layout_marginStart="15dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvOr"
+        style="@style/CustomTextViewStyle"
+        android:text="@string/or"
+
+        app:layout_constraintVertical_bias="0.85"
+        app:layout_constraintTop_toBottomOf="@id/layoutAppName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toTopOf="@id/tvOr"
+        app:layout_constraintBottom_toBottomOf="@id/tvOr"
+        app:layout_constraintEnd_toStartOf="@id/tvOr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.4"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toTopOf="@id/tvOr"
+        app:layout_constraintBottom_toBottomOf="@id/tvOr"
+        app:layout_constraintStart_toEndOf="@id/tvOr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.4" />
+
+    <ImageView
+        android:id="@+id/ivGoogle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/google"
+
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHeight_percent="0.07"
+
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/tvOr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivFB"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/ivFB"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/fb"
+
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHeight_percent="0.07"
+
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintStart_toEndOf="@id/ivGoogle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvOr"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
