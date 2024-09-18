@@ -1,4 +1,4 @@
-package com.example.todoapp.constant
+package com.example.todoapp.utils
 
 class Constant {
     companion object {

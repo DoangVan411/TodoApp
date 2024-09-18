@@ -10,5 +10,6 @@ data class User (
         val id: Int = 0,
     @ColumnInfo val name: String,
     @ColumnInfo val email: String,
-    @ColumnInfo val password: String
+    @ColumnInfo val password: String,
+    val salt: String
 )

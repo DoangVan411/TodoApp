@@ -55,6 +55,7 @@ class LoginFragment : Fragment() {
         loginViewModel.loginResult.observe(viewLifecycleOwner, Observer {user ->
             if(user != null) {
                 showToast("Login successful")
+                loginViewModel.resetLoginResult()
                 findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
             }
             else {

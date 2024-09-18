@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startFragment">
+    app:startDestination="@id/onboardingFragment">
 
     <fragment
-        android:id="@+id/startFragment"
-        android:name="com.example.todoapp.ui.StartFragment"
-        android:label="fragment_start"
-        tools:layout="@layout/fragment_start" >
+        android:id="@+id/onboardingFragment"
+        android:name="com.example.todoapp.ui.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
         <action
-            android:id="@+id/action_startFragment_to_loginFragment"
+            android:id="@+id/action_onboardingFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment

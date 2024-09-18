@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.todoapp.model.User
 import com.example.todoapp.repository.UserRepository
+import com.example.todoapp.utils.Security
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val userRepository: UserRepository): ViewModel() {
@@ -16,10 +17,15 @@ class RegisterViewModel(private val userRepository: UserRepository): ViewModel()
 
     fun register(name: String, email: String, password: String) {
         viewModelScope.launch {
-            if (userRepository.isEmailExist(email)) {
+            val user = userRepository.getUserByEmail(email)
+            if (user != null) {
                 _registrationResult.value = Pair(false, "Email already exists")
             } else {
-                userRepository.insertUser(User(0, name, email, password))
+                //tao salt
+                val salt = Security.generateSalt()
+                //ma hoa mat khau voi salt
+                val hashedPassword = Security.hashPassword(password, salt)
+                userRepository.insertUser(User(0, name, email, hashedPassword, salt))
                 _registrationResult.value = Pair(true, "Register sucessful")
             }
         }

@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.example.todoapp.constant.Constant
+import com.example.todoapp.utils.Constant
 import com.example.todoapp.R
-import com.example.todoapp.databinding.FragmentStartBinding
+import com.example.todoapp.databinding.FragmentOnboardingBinding
 import com.example.todoapp.ui.adapters.ImageAdapter
 
 
-class StartFragment : Fragment() {
-    private var _binding: FragmentStartBinding? = null
+class OnboardingFragment : Fragment() {
+    private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
 
 
@@ -33,7 +33,7 @@ class StartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentStartBinding.inflate(inflater, container, false)
+        _binding = FragmentOnboardingBinding.inflate(inflater, container, false)
         val view = binding.root
 
         //gan gia tri cho cac list
@@ -62,7 +62,7 @@ class StartFragment : Fragment() {
             }
 
             tvSkip.setOnClickListener {
-                findNavController().navigate(R.id.action_startFragment_to_loginFragment)
+                findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
             }
 
         }
@@ -101,7 +101,7 @@ class StartFragment : Fragment() {
             viewPager.setCurrentItem(currentPage, true)
         }
         else if(currentPage == images.size - 1) {
-            findNavController().navigate(R.id.action_startFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
         }
     }
 

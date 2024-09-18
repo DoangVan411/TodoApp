@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.todoapp.model.User
 import com.example.todoapp.repository.UserRepository
+import com.example.todoapp.utils.Security
 import kotlinx.coroutines.launch
 
 class LoginViewModel (private val userRepository: UserRepository): ViewModel() {
@@ -15,9 +16,23 @@ class LoginViewModel (private val userRepository: UserRepository): ViewModel() {
 
     fun login(email:String, password: String) {
         viewModelScope.launch {
-            val user = userRepository.getUser(email, password)
-            _loginResult.value = user
+            val user = userRepository.getUserByEmail(email)
+            if(user != null) {
+                val hashedPassword = Security.hashPassword(password, user.salt)
+                if (user.password == hashedPassword) {
+                    _loginResult.value = user
+                } else {
+                    _loginResult.value = null
+                }
+            }
+            else {
+                _loginResult.value = null
+            }
         }
+    }
+
+    fun resetLoginResult() {
+        _loginResult.value = null
     }
 
     class LoginViewModelFactory(private val repository: UserRepository) : ViewModelProvider.Factory {
