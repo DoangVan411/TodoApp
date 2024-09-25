@@ -48,7 +48,6 @@ class LoginFragment : Fragment() {
                 login()
             }
         }
-
     }
 
     private fun setupLoginResultObserver() {
@@ -56,6 +55,7 @@ class LoginFragment : Fragment() {
             if(user != null) {
                 showToast("Login successful")
                 loginViewModel.resetLoginResult()
+                loginViewModel.loginResult.removeObservers(viewLifecycleOwner)
                 findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
             }
             else {

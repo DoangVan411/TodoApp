@@ -83,6 +83,7 @@ class RegisterFragment : Fragment() {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
