@@ -13,5 +13,9 @@ class Constant {
         const val BLANK_TEXT = ""
         const val NEXT = "Next >>"
         const val SKIP = "Skip >>"
+        const val FILL_ALL_FIELDS = "Please fill all fields"
+        const val UPDATE_SUCCESSFUL = "Update successful"
+        const val INSERT_SUCCESSFUL = "Insert successful"
+        const val DELETE_SUCCESSFUL = "Delete successful"
     }
 }

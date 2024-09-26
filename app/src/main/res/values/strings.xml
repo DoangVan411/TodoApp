@@ -26,4 +26,23 @@
     <string name="user_name">Username</string>
     <string name="enter_username">Enter username</string>
     <string name="sign_up">Sign up</string>
+    <string name="add_new_task">Add new task +</string>
+    <string name="to_do">To-do</string>
+    <string name="all">All</string>
+    <string name="importance">Importance</string>
+    <string name="new_task">New Task</string>
+    <string name="task_title">Task Title</string>
+    <string name="description">Description</string>
+    <string name="not_important">Not Important</string>
+    <string name="important">Important</string>
+    <string name="due_time">Due Time</string>
+    <string name="category">Category</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
+    <string name="add_task_name">Add task name…</string>
+    <string name="add_description">Add description…</string>
+    <string name="choose_category">Choose category</string>
+    <string name="time_format">dd/mm/yyyy hh:mm</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="save">Save</string>
 </resources>

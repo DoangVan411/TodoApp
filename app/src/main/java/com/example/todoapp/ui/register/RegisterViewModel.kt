@@ -26,7 +26,7 @@ class RegisterViewModel(private val userRepository: UserRepository): ViewModel()
                 //ma hoa mat khau voi salt
                 val hashedPassword = Security.hashPassword(password, salt)
                 userRepository.insertUser(User(0, name, email, hashedPassword, salt))
-                _registrationResult.value = Pair(true, "Register sucessful")
+                _registrationResult.value = Pair(true, "Register successful")
             }
         }
     }
