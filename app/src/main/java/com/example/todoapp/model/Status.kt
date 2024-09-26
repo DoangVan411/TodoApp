@@ -1,5 +1,7 @@
 package com.example.todoapp.model
 
-enum class Status {
-    ON_GOING, COMPLETED, DELETED
+enum class Status(val displayName: String) {
+    ON_GOING("On going"),
+    COMPLETED("Completed"),
+    DELETED("Deleted")
 }

@@ -69,6 +69,7 @@ class InsertFragment : BottomSheetDialogFragment() {
             binding.cbImportant.isChecked = false
         }
 
+        //set up observer cho insertViewModel.insertResult
         insertViewModel.insertResult.observe(viewLifecycleOwner) {result ->
             val (success, message) = result
             if(success) {
@@ -92,7 +93,7 @@ class InsertFragment : BottomSheetDialogFragment() {
             else -> null
         }
 
-        insertViewModel.insertTask(1, title, description, importance, dueTime, 0, Status.ON_GOING)
+        insertViewModel.insertTask(1, title, description, importance, dueTime, 0)
     }
 
     private fun showDateTimePicker() {

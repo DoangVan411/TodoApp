@@ -149,10 +149,12 @@
 
         android:text="@string/take_me_in"
         android:backgroundTint="@color/dark_blue"
+        android:background="@drawable/button_corner"
+        app:backgroundTint="@null"
 
         app:layout_constraintWidth_percent="0.9"
         app:layout_constraintVertical_bias="0.2"
-        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintHeight_percent="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvForgot"

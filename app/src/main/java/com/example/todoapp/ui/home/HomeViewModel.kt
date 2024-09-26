@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 class HomeViewModel(private val repository: TaskRepository): ViewModel() {
 
     val taskList: LiveData<List<Task>> = repository.getAllTasks()
-
     
 
     class HomeViewModelFactory(private val repository: TaskRepository): ViewModelProvider.Factory {

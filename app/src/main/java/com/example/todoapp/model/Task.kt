@@ -20,7 +20,7 @@ import java.sql.Timestamp
 data class Task (
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    @ColumnInfo(name = "user_id") val userId: Int,
+    @ColumnInfo(name = "user_id") val userId: Int = 1,
     val title: String,
     val description: String,
     val importance: Boolean,

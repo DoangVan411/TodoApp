@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.insert.InsertFragment">
+    tools:context=".ui.home.insert.InsertFragment"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/tvNewTask"
@@ -184,10 +185,11 @@
         android:layout_height="0dp"
 
         android:text="@string/cancel"
-        android:backgroundTint="@color/dark_blue"
-        android:textColor="@color/white"
+        android:background="@drawable/button_custom"
+        app:backgroundTint="@null"
+        android:textColor="@color/dark_blue"
 
-        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintWidth_percent="0.4"
         app:layout_constraintVertical_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
@@ -201,10 +203,11 @@
         android:layout_height="0dp"
 
         android:text="@string/create"
-        android:backgroundTint="@color/dark_blue"
+        android:background="@drawable/button_corner"
+        app:backgroundTint="@null"
         android:textColor="@color/white"
 
-        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintWidth_percent="0.4"
         app:layout_constraintVertical_bias="0.95"
         app:layout_constraintStart_toEndOf="@id/btnCancel"

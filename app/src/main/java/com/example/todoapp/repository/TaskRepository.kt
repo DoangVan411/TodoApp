@@ -14,15 +14,15 @@ class TaskRepository(private val taskDao: TaskDao) {
         taskDao.update(task)
     }
 
-    suspend fun deleteTask(task: Task) {
-        taskDao.delete(task)
+    suspend fun deleteTaskById(id: Int) {
+        taskDao.deleteTaskById(id)
     }
 
     fun getAllTasks(): LiveData<List<Task>> {
         return taskDao.getAllTasks()
     }
 
-    suspend fun getTaskById(id: Int): Task?{
+    fun getTaskById(id: Int): LiveData<Task>{
         return taskDao.getTaskById(id)
     }
 }

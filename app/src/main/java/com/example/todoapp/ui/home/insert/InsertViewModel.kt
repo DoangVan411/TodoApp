@@ -26,8 +26,7 @@ class InsertViewModel(private val repository: TaskRepository): ViewModel() {
         description: String?,
         importance: Boolean?,
         dueTime: Long?,
-        category: Int,
-        status: Status
+        category: Int
     ) {
         if (title.isNullOrEmpty() || description.isNullOrEmpty() || dueTime == null || importance == null) {
             _insertResult.value = Pair(false, Constant.FILL_ALL_FIELDS)
@@ -41,13 +40,13 @@ class InsertViewModel(private val repository: TaskRepository): ViewModel() {
             importance = importance,
             dueDate = Timestamp(dueTime),
             category = category,
-            status = status
+            status = Status.ON_GOING
         )
 
         viewModelScope.launch {
             repository.insertTask(task)
         }
-        _insertResult.value = Pair(true, "Task inserted")
+        _insertResult.value = Pair(true, Constant.INSERT_SUCCESSFUL)
     }
 
 

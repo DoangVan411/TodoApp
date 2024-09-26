@@ -19,6 +19,7 @@ class TaskAdapter(
         val tvDescription = binding.tvDescription
         val tvDueDate = binding.tvDueDate
         val ivImportance = binding.ivStar
+        val tvStatus = binding.tvStatus
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -34,8 +35,12 @@ class TaskAdapter(
         holder.tvDescription.text = currentTask.description
         val timeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         holder.tvDueDate.text = timeFormat.format(currentTask.dueDate)
+        holder.tvStatus.text = currentTask.status.displayName
         if(tasks[position].importance) {
             holder.ivImportance.setImageResource(R.drawable.star)
+        }
+        else {
+            holder.ivImportance.setImageDrawable(null)
         }
 
         holder.itemView.setOnClickListener {
