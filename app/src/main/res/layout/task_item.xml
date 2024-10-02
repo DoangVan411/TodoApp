@@ -10,8 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/light_blue">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -81,16 +80,16 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:id="@+id/tvStatus"
+            android:id="@+id/tvCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:textColor="@color/white"
             android:textSize="15sp"
+            android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
 
-            app:layout_constraintHorizontal_bias="0.83"
+            app:layout_constraintHorizontal_bias="0.95"
 
             app:layout_constraintStart_toEndOf="@id/tvDueDate"
             app:layout_constraintTop_toBottomOf="@id/tvDescription"

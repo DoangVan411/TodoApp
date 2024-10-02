@@ -58,10 +58,6 @@ class EditViewModel(private val repository: TaskRepository): ViewModel()  {
         }
     }
 
-    fun updateStatus(id: Int, status: Status) {
-
-    }
-
     class EditViewModelFactory(private val taskRepository: TaskRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(EditViewModel::class.java)) {

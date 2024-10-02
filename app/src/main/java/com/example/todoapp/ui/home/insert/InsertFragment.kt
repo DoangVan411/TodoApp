@@ -8,10 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.database.AppDatabase
 import com.example.todoapp.databinding.FragmentInsertBinding
 import com.example.todoapp.model.Status
+import com.example.todoapp.repository.CategoryRepository
 import com.example.todoapp.repository.TaskRepository
+import com.example.todoapp.ui.adapters.CategoryAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -24,8 +28,11 @@ class InsertFragment : BottomSheetDialogFragment() {
 
     private var selectedDate: Calendar? = null
 
+    private lateinit var categoryRecyclerView: RecyclerView
+    private lateinit var categoryAdapter: CategoryAdapter
+
     private val insertViewModel:InsertViewModel by viewModels {
-        InsertViewModel.InsertViewModelFactory(TaskRepository(AppDatabase.getDatabase(requireContext()).taskDao()))
+        InsertViewModel.InsertViewModelFactory(TaskRepository(AppDatabase.getDatabase(requireContext()).taskDao()), CategoryRepository(AppDatabase.getDatabase(requireContext()).categoryDao()))
     }
 
     override fun onCreateView(
@@ -34,6 +41,14 @@ class InsertFragment : BottomSheetDialogFragment() {
     ): View {
         _binding = FragmentInsertBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        //set up category recycler view
+        categoryRecyclerView = binding.rvCategory
+        categoryRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        categoryAdapter = CategoryAdapter(mutableListOf()) { category ->
+
+        }
+        categoryRecyclerView.adapter = categoryAdapter
 
         return view
     }
@@ -80,6 +95,9 @@ class InsertFragment : BottomSheetDialogFragment() {
                 showToast(message)
             }
         }
+
+        //set up observer cho insertViewModel.categoryList
+        setUpCategoryListObserver()
     }
 
     private fun insertTask() {
@@ -93,8 +111,10 @@ class InsertFragment : BottomSheetDialogFragment() {
             else -> null
         }
 
-        insertViewModel.insertTask(1, title, description, importance, dueTime, 0)
+        val category = categoryAdapter.getSelectedCategory()
+        insertViewModel.insertTask(1, title, description, importance, dueTime, category!!.id)
     }
+
 
     private fun showDateTimePicker() {
         val calendar = Calendar.getInstance()
@@ -126,6 +146,12 @@ class InsertFragment : BottomSheetDialogFragment() {
             calendar.get(Calendar.DAY_OF_MONTH)
         )
         datePicker.show()
+    }
+
+    private fun setUpCategoryListObserver() {
+        insertViewModel.categoryList.observe(viewLifecycleOwner) {categories ->
+            categoryAdapter.updateCategories(categories)
+        }
     }
 
     private fun showToast(message: String) {

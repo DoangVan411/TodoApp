@@ -14,6 +14,12 @@ import java.sql.Timestamp
             parentColumns = ["id"],
             childColumns = ["user_id"],
             onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey (
+            entity = Category::class,
+            parentColumns = ["id"],
+            childColumns = ["category"],
+            onDelete = ForeignKey.CASCADE
         )
     ]
 )

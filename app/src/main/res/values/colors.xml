@@ -8,4 +8,9 @@
     <color name="gray">#BDBDBD</color>
     <color name="red">#FF1818</color>
     <color name="light_green">#00FF22</color>
+    <color name="personal_color">#FCA510</color>
+    <color name="work_color">#D85147</color>
+    <color name="shopping_color">#3876CD</color>
+    <color name="fitness_color">#28AE89</color>
+    <color name="light_orange">#FFEDE7</color>
 </resources>
