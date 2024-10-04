@@ -12,9 +12,23 @@ import com.example.todoapp.databinding.CategoryItemBinding
 import com.example.todoapp.model.Category
 
 class CategoryAdapter (
-    private var categories: List<Category>,
-    private val onCategoryClick: (Category) -> Unit
+    private var categories: List<Category>
 ): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+
+
+    private var selectedCategoryId: Int = 0
+    constructor(
+        categories: List<Category>,
+        selectedCategoryId: Int
+    ) : this(categories) {
+        this.selectedCategoryId = selectedCategoryId
+    }
+
+    constructor(
+        categories: List<Category>,
+        onCategoryClick: (Category) -> Unit
+    ) : this(categories) {
+    }
 
     private var selectedPosition = RecyclerView.NO_POSITION
     private var selectedCategory: Category? = null
@@ -33,25 +47,24 @@ class CategoryAdapter (
             background?.setColor(ContextCompat.getColor(binding.root.context, category.color))
 
             // Thiết lập kích thước item view
-            val scale = if (adapterPosition == selectedPosition) 0.9f else 1.0f // Kích thước khi chọn (thu nhỏ)
+            val scale = if (category.id == selectedCategoryId || adapterPosition == selectedPosition) 0.85f else 1.0f // Kích thước khi chọn (thu nhỏ)
             binding.root.scaleX = scale
             binding.root.scaleY = scale
 
             // Thiết lập sự kiện click cho item
             binding.root.setOnClickListener {
-                onCategoryClick(category)
-
-                notifyItemChanged(selectedPosition) // Cập nhật item trước đó
-                selectedPosition = adapterPosition // Cập nhật item hiện tại là đã chọn
+                selectedCategoryId = category.id
+                notifyDataSetChanged()
+                selectedPosition = adapterPosition
                 selectedCategory = category
-                notifyItemChanged(selectedPosition)
+                notifyDataSetChanged()
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = CategoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CategoryViewHolder(view)
+        val binding = CategoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CategoryViewHolder(binding)
     }
 
     override fun getItemCount(): Int {

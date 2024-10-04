@@ -45,9 +45,7 @@ class InsertFragment : BottomSheetDialogFragment() {
         //set up category recycler view
         categoryRecyclerView = binding.rvCategory
         categoryRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        categoryAdapter = CategoryAdapter(mutableListOf()) { category ->
-
-        }
+        categoryAdapter = CategoryAdapter(mutableListOf())
         categoryRecyclerView.adapter = categoryAdapter
 
         return view

@@ -80,6 +80,10 @@ class HomeFragment : Fragment() {
         binding.btnAdd.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_insertFragment)
         }
+
+        binding.tvViewAllCategories.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_categoryFragment)
+        }
     }
 
     private fun setUpTaskListObserver() {

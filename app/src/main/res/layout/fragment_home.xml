@@ -51,6 +51,7 @@
             android:layout_height="match_parent"
 
             android:text="@string/to_do"
+            android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -101,12 +102,33 @@
         android:text="@string/categories"
 
         style="@style/CustomTextViewStyle"
+        android:textSize="18sp"
         app:layout_constraintVertical_bias="0.03"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
         app:layout_constraintBottom_toTopOf="@id/btnAdd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/tvViewAllCategories"
+        android:text="@string/view"
+
+        style="@style/CustomTextViewStyle"
+        android:textSize="14sp"
+
+        app:layout_constraintVertical_bias="0.035"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
     
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCategory"
@@ -132,7 +154,7 @@
         <TextView
             android:id="@+id/tvAll"
             style="@style/CustomTextViewStyle"
-            android:text="@string/all"/>
+            android:text="@string/all" />
 
         <View
             android:layout_width="2dp"
@@ -144,6 +166,7 @@
             android:id="@+id/tvImportance"
             style="@style/CustomTextViewStyle"
             android:text="@string/importance"
+            android:fontFamily="@font/montserrat_bold"
             android:layout_marginStart="10dp"/>
     </LinearLayout>
 

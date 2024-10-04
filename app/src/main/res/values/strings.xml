@@ -46,4 +46,11 @@
     <string name="edit_task">Edit Task</string>
     <string name="save">Save</string>
     <string name="categories">Categories</string>
+    <string name="view">View >></string>
+    <string name="create_category">Create new category</string>
+    <string name="category_title">Category title</string>
+    <string name="enter_category_title">Enter category title</string>
+    <string name="icon">Category icon</string>
+    <string name="color">Category color</string>
+    <string name="choose_icon">Choose icon</string>
 </resources>

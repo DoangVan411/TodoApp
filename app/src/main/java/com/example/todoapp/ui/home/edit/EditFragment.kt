@@ -9,11 +9,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.database.AppDatabase
 import com.example.todoapp.databinding.FragmentEditBinding
 import com.example.todoapp.model.Status
 import com.example.todoapp.model.Task
+import com.example.todoapp.repository.CategoryRepository
 import com.example.todoapp.repository.TaskRepository
+import com.example.todoapp.ui.adapters.CategoryAdapter
 import com.example.todoapp.utils.Constant
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.text.SimpleDateFormat
@@ -28,8 +32,11 @@ class EditFragment : BottomSheetDialogFragment() {
     private var selectedDate: Calendar? = null
     private var taskDueDate: Long? = null
 
+    private lateinit var categoryRecyclerView: RecyclerView
+    private lateinit var categoryAdapter: CategoryAdapter
+
     private val editViewModel: EditViewModel by viewModels {
-        EditViewModel.EditViewModelFactory(TaskRepository(AppDatabase.getDatabase(requireContext()).taskDao()))
+        EditViewModel.EditViewModelFactory(TaskRepository(AppDatabase.getDatabase(requireContext()).taskDao()), CategoryRepository(AppDatabase.getDatabase(requireContext()).categoryDao()))
     }
 
     override fun onCreateView(
@@ -38,6 +45,10 @@ class EditFragment : BottomSheetDialogFragment() {
     ): View {
         _binding = FragmentEditBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        //set up category recycler view
+        categoryRecyclerView = binding.rvCategory
+        categoryRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         return view
     }
@@ -56,6 +67,16 @@ class EditFragment : BottomSheetDialogFragment() {
         //lay ra ca task tu taskId da truyen vao, set up thong tin cua task cho cac edit text
         val taskId = arguments?.getInt("taskId") ?: -1
         setUpInformation(taskId)
+
+        // Lấy task thông qua ViewModel
+        editViewModel.getTaskById(taskId).observe(viewLifecycleOwner, Observer { task ->
+            task?.let {
+                categoryAdapter = CategoryAdapter(mutableListOf(), task.category)
+                categoryRecyclerView.adapter = categoryAdapter
+            }
+            //set up observer cho insertViewModel.categoryList
+            setUpCategoryListObserver()
+        })
 
         //Lưu sau khi sửa
         binding.btnSave.setOnClickListener {
@@ -117,12 +138,13 @@ class EditFragment : BottomSheetDialogFragment() {
             binding.cbNotImportant.isChecked -> false
             else -> null
         }
+        val category = categoryAdapter.getSelectedCategory()
 
         if(mode == 1) {
-            editViewModel.updateTask(taskId, title, description, importance, dueTime, 0, Status.ON_GOING)
+            editViewModel.updateTask(taskId, title, description, importance, dueTime, category!!.id, Status.ON_GOING)
         }
         else {
-            editViewModel.updateTask(taskId, title, description, importance, dueTime, 0, Status.COMPLETED)
+            editViewModel.updateTask(taskId, title, description, importance, dueTime, category!!.id, Status.COMPLETED)
         }
     }
 
@@ -193,6 +215,12 @@ class EditFragment : BottomSheetDialogFragment() {
         editViewModel.deleteTask(taskId)
         dismiss()
         showToast(Constant.DELETE_SUCCESSFUL)
+    }
+
+    private fun setUpCategoryListObserver() {
+        editViewModel.categoryList.observe(viewLifecycleOwner) {categories ->
+            categoryAdapter.updateCategories(categories)
+        }
     }
 
     private fun showToast(message: String) {
