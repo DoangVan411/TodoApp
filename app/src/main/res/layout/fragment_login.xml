@@ -41,6 +41,7 @@
             android:textSize="35sp"
             android:textStyle="bold"
             android:textColor="@color/dark_blue"
+            android:fontFamily="@font/montserrat_bold"
             android:layout_gravity="center"
 
             android:layout_marginStart="10dp"
@@ -148,6 +149,7 @@
         android:layout_height="0dp"
 
         android:text="@string/take_me_in"
+        android:fontFamily="@font/montserrat_bold"
         android:backgroundTint="@color/dark_blue"
         android:background="@drawable/button_corner"
         app:backgroundTint="@null"

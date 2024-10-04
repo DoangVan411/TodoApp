@@ -9,5 +9,5 @@
         android:color="@color/dark_blue" />
 
     <!-- Màu nền cho EditText (có thể điều chỉnh nếu cần) -->
-    <solid android:color="@color/sky_blue" />
+    <solid android:color="@color/white" />
 </shape>

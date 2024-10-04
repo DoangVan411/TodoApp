@@ -8,15 +8,17 @@
         <item name="android:background">@drawable/edit_text_background</item>
         <item name="android:paddingStart">10dp</item>
         <item name="paddingEnd">10dp</item>
+        <item name="fontFamily">@font/montserrat</item>
         <item name="android:textColor">@android:color/black</item> <!-- Màu chữ (có thể tùy chỉnh theo nhu cầu) -->
-        <item name="android:textSize">16sp</item> <!-- Kích thước chữ (có thể tùy chỉnh theo nhu cầu) -->
+        <item name="android:textSize">15.5sp</item> <!-- Kích thước chữ (có thể tùy chỉnh theo nhu cầu) -->
     </style>
 
     <!-- create text view style -->
     <style name="CustomTextViewStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/montserrat_bold</item>
         <item name="android:textColor">@color/dark_blue</item>
         <item name="android:textStyle">bold</item>
     </style>

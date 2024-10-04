@@ -5,14 +5,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.todoapp.model.Category
 import com.example.todoapp.model.Status
 import com.example.todoapp.model.Task
+import com.example.todoapp.repository.CategoryRepository
 import com.example.todoapp.repository.TaskRepository
 import com.example.todoapp.utils.Constant
 import kotlinx.coroutines.launch
 import java.sql.Timestamp
 
-class EditViewModel(private val repository: TaskRepository): ViewModel()  {
+class EditViewModel(
+    private val repository: TaskRepository,
+    private val categoryRepository: CategoryRepository,
+): ViewModel()  {
 
     private val _updateResult = MutableLiveData<Pair<Boolean, String>>()
     val updateResult get() = _updateResult
@@ -20,6 +25,9 @@ class EditViewModel(private val repository: TaskRepository): ViewModel()  {
     fun getTaskById(taskId: Int): LiveData<Task>{
         return repository.getTaskById(taskId)
     }
+
+    // Lấy danh sách Category từ CategoryRepository
+    val categoryList: LiveData<List<Category>> = categoryRepository.getAllCategories()
 
     fun updateTask(
         id: Int,
@@ -58,14 +66,13 @@ class EditViewModel(private val repository: TaskRepository): ViewModel()  {
         }
     }
 
-    fun updateStatus(id: Int, status: Status) {
-
-    }
-
-    class EditViewModelFactory(private val taskRepository: TaskRepository) : ViewModelProvider.Factory {
+    class EditViewModelFactory(
+        private val taskRepository: TaskRepository,
+        private val categoryRepository: CategoryRepository
+    ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(EditViewModel::class.java)) {
-                return EditViewModel(taskRepository) as T
+                return EditViewModel(taskRepository, categoryRepository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

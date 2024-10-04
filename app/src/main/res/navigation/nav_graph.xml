@@ -42,6 +42,12 @@
         <action
             android:id="@+id/action_homeFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <dialog
         android:id="@+id/insertFragment"
@@ -57,4 +63,35 @@
             android:name="taskId"
             app:argType="integer" />
     </dialog>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.todoapp.ui.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_insertCategoryFragment"
+            app:destination="@id/insertCategoryFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/insertCategoryFragment"
+        android:name="com.example.todoapp.ui.category.insert.InsertCategoryFragment"
+        android:label="fragment_insert_category"
+        tools:layout="@layout/fragment_insert_category" >
+        <action
+            android:id="@+id/action_insertCategoryFragment_to_imagePickerFragment"
+            app:destination="@id/imagePickerFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/imagePickerFragment"
+        android:name="com.example.todoapp.ui.category.insert.ImagePickerFragment"
+        android:label="ImagePickerFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.todoapp.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+    </fragment>
 </navigation>
