@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
         taskRecyclerView = binding.rvTask
         taskRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        taskAdapter = TaskAdapter(mutableListOf(), { task ->
+        taskAdapter = TaskAdapter({ task ->
             val action = HomeFragmentDirections.actionHomeFragmentToEditFragment(task.id)
             findNavController().navigate(action)
         }, { categoryId ->
@@ -76,6 +76,11 @@ class HomeFragment : Fragment() {
         //set up observer cho homeViewModel.categoryList
         setUpCategoryListObserver()
 
+        //Button điều hướng đến SearchFragment
+        binding.ivSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
+
         //Button dieu huong den InsertFragment
         binding.btnAdd.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_insertFragment)
@@ -88,7 +93,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpTaskListObserver() {
         homeViewModel.taskList.observe(viewLifecycleOwner) {tasks ->
-            taskAdapter.updateTasks(tasks)
+            taskAdapter.submitList(tasks)
         }
     }
 

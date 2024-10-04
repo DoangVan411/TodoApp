@@ -1,26 +1,23 @@
 package com.example.todoapp.ui.adapters
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
 import com.example.todoapp.databinding.TaskItemBinding
-import com.example.todoapp.model.Status
 import com.example.todoapp.model.Task
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class TaskAdapter(
-    private var tasks: List<Task>,
     private val onItemClicked: (Task) -> Unit,
     private val getCategoryColor: (Int) -> Int
-): RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+) : ListAdapter<Task, TaskAdapter.TaskViewHolder>(TaskDiffCallback()) {
 
-    inner class TaskViewHolder(private val binding: TaskItemBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class TaskViewHolder(private val binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root) {
         private val tvTitle = binding.tvTitle
         private val tvDescription = binding.tvDescription
         private val tvDueDate = binding.tvDueDate
@@ -32,20 +29,17 @@ class TaskAdapter(
             val timeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
             tvDueDate.text = timeFormat.format(task.dueDate)
 
-
             // Thiết lập icon cho tầm quan trọng
-            if(task.importance) {
+            if (task.importance) {
                 ivImportance.setImageResource(R.drawable.star)
-            }
-            else {
+            } else {
                 ivImportance.setImageDrawable(null)
             }
 
-            //set màu nền cho từng task
+            // Set màu nền cho từng task
             val categoryColor = getCategoryColor(task.category)
             val color = ContextCompat.getColor(binding.root.context, categoryColor)
             binding.root.setCardBackgroundColor(color)
-
         }
     }
 
@@ -54,21 +48,23 @@ class TaskAdapter(
         return TaskViewHolder(view)
     }
 
-    override fun getItemCount(): Int = tasks.size
-
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        val currentTask = tasks[position]
-
+        val currentTask = getItem(position)
         holder.bind(currentTask)
 
-        //Thiết lập sự kiện click cho itemView
+        // Thiết lập sự kiện click cho itemView
         holder.itemView.setOnClickListener {
             onItemClicked(currentTask)
         }
     }
+}
 
-    fun updateTasks(newTasks: List<Task>) {
-        tasks = newTasks
-        notifyDataSetChanged()
+class TaskDiffCallback : DiffUtil.ItemCallback<Task>() {
+    override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
+        return oldItem == newItem
     }
 }
