@@ -12,22 +12,19 @@ import com.example.todoapp.databinding.CategoryItemBinding
 import com.example.todoapp.model.Category
 
 class CategoryAdapter (
-    private var categories: List<Category>
+    private var categories: List<Category>,
+    private var onCategoryClick: (Category) -> Unit
 ): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
 
     private var selectedCategoryId: Int = 0
     constructor(
         categories: List<Category>,
-        selectedCategoryId: Int
-    ) : this(categories) {
-        this.selectedCategoryId = selectedCategoryId
-    }
-
-    constructor(
-        categories: List<Category>,
+        selectedCategoryId: Int,
         onCategoryClick: (Category) -> Unit
-    ) : this(categories) {
+    ) : this(categories, onCategoryClick) {
+        this.selectedCategoryId = selectedCategoryId
+        this.onCategoryClick = onCategoryClick
     }
 
     private var selectedPosition = RecyclerView.NO_POSITION
@@ -53,6 +50,7 @@ class CategoryAdapter (
 
             // Thiết lập sự kiện click cho item
             binding.root.setOnClickListener {
+                onCategoryClick(category)
                 selectedCategoryId = category.id
                 notifyDataSetChanged()
                 selectedPosition = adapterPosition

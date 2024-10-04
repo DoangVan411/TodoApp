@@ -56,7 +56,11 @@ class InsertCategoryFragment : DialogFragment() {
             R.color.work_color,
             R.color.fitness_color,
             R.color.personal_color,
-            R.color.shopping_color
+            R.color.shopping_color,
+            R.color.jade_green,
+            R.color.pink,
+            R.color.brown,
+            R.color.violet
         )
 
         binding.rvColor.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
