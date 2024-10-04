@@ -64,8 +64,14 @@ class SearchFragment : Fragment() {
             taskAdapter.submitList(tasks)
         }
 
+        //set up categoryList Observer
         searchViewModel.categoryList.observe(viewLifecycleOwner) { categories ->
             searchViewModel.updateCategoryColors(categories)
+        }
+
+        //điều hướng về màn Home bằng nút back
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         //set up search view

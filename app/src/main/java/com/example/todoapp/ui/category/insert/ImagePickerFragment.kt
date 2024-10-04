@@ -31,7 +31,11 @@ class ImagePickerFragment: DialogFragment() {
             R.drawable.work,
             R.drawable.person,
             R.drawable.shopping,
-            R.drawable.fitness
+            R.drawable.fitness,
+            R.drawable.book,
+            R.drawable.music,
+            R.drawable.sport,
+            R.drawable.entertain
         )
 
         val adapter = ImagePickerAdapter(imageList) { iv ->

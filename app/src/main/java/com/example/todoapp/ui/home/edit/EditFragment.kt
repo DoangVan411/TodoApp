@@ -71,7 +71,7 @@ class EditFragment : BottomSheetDialogFragment() {
         // Lấy task thông qua ViewModel
         editViewModel.getTaskById(taskId).observe(viewLifecycleOwner, Observer { task ->
             task?.let {
-                categoryAdapter = CategoryAdapter(mutableListOf(), task.category)
+                categoryAdapter = CategoryAdapter(mutableListOf(), task.category) {}
                 categoryRecyclerView.adapter = categoryAdapter
             }
             //set up observer cho insertViewModel.categoryList

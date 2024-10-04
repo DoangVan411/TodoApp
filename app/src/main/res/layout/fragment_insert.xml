@@ -136,19 +136,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        android:src="@drawable/clock"
-        app:layout_constraintDimensionRatio="1:1"
-
-        app:layout_constraintHeight_percent="0.04"
-        android:layout_marginStart="10dp"
-        app:layout_constraintTop_toTopOf="@id/etDueDate"
-        app:layout_constraintBottom_toBottomOf="@id/etDueDate"
-        app:layout_constraintStart_toStartOf="@id/etDueDate"/>
-
     <TextView
         android:id="@+id/etDueDate"
         style="@style/CustomEditTextStyle"
@@ -164,6 +151,19 @@
         app:layout_constraintBottom_toTopOf="@id/btnCancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:src="@drawable/clock"
+        app:layout_constraintDimensionRatio="1:1"
+
+        app:layout_constraintHeight_percent="0.04"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@id/etDueDate"
+        app:layout_constraintBottom_toBottomOf="@id/etDueDate"
+        app:layout_constraintStart_toStartOf="@id/etDueDate"/>
 
     <TextView
         android:id="@+id/tvCategory"

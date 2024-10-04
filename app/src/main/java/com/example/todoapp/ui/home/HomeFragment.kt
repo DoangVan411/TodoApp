@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
 import com.example.todoapp.database.AppDatabase
 import com.example.todoapp.databinding.FragmentHomeBinding
+import com.example.todoapp.model.Category
+import com.example.todoapp.model.Task
 import com.example.todoapp.repository.CategoryRepository
 import com.example.todoapp.repository.TaskRepository
 import com.example.todoapp.ui.adapters.CategoryAdapter
@@ -30,6 +32,10 @@ class HomeFragment : Fragment() {
     private lateinit var categoryRecyclerView: RecyclerView
     private lateinit var categoryAdapter: CategoryAdapter
 
+    private lateinit var defaultCategory: Category
+
+    private var allTasks: List<Task> = listOf()
+
     private val homeViewModel: HomeViewModel by viewModels {
         HomeViewModel.HomeViewModelFactory(TaskRepository(AppDatabase.getDatabase(requireContext()).taskDao()), CategoryRepository(AppDatabase.getDatabase(requireContext()).categoryDao()), requireContext())
     }
@@ -41,7 +47,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        //Thêm các category mặc định của app
         homeViewModel.insertDefaultCategories()
+
+        //Khởi tạo Category All
+        defaultCategory = Category(id = -1, title = "All", color = R.color.dark_blue, icon = R.drawable.all_task)
 
         //set up task recycler view
         taskRecyclerView = binding.rvTask
@@ -52,16 +62,16 @@ class HomeFragment : Fragment() {
             findNavController().navigate(action)
         }, { categoryId ->
             val categoryColor = homeViewModel.categoryColor.value?.get(categoryId) ?: -1
-            Log.d("CATEGORY", categoryColor.toString())
             categoryColor
         })
-
         taskRecyclerView.adapter = taskAdapter
 
         //set up category recycler view
         categoryRecyclerView = binding.rvCategory
         categoryRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        categoryAdapter = CategoryAdapter(mutableListOf()) {}
+        categoryAdapter = CategoryAdapter(mutableListOf()) {category ->
+            filterTasksByCategory(category.id)
+        }
         categoryRecyclerView.adapter = categoryAdapter
 
         return view
@@ -93,15 +103,25 @@ class HomeFragment : Fragment() {
 
     private fun setUpTaskListObserver() {
         homeViewModel.taskList.observe(viewLifecycleOwner) {tasks ->
+            allTasks = tasks
             taskAdapter.submitList(tasks)
         }
     }
 
     private fun setUpCategoryListObserver() {
         homeViewModel.categoryList.observe(viewLifecycleOwner) {categories ->
-            categoryAdapter.updateCategories(categories)
-            // Cập nhật màu sắc category
-            homeViewModel.updateCategoryColors(categories)
+            val allCategories = listOf(defaultCategory) + categories
+            categoryAdapter.updateCategories(allCategories)
+            homeViewModel.updateCategoryColors(allCategories)
+        }
+    }
+
+    private fun filterTasksByCategory(categoryId: Int) {
+        if (categoryId == -1) {
+            taskAdapter.submitList(allTasks)
+        } else {
+            val filteredTasks = allTasks.filter { it.category == categoryId }
+            taskAdapter.submitList(filteredTasks)
         }
     }
 
