@@ -1,5 +1,6 @@
 package com.example.todoapp.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -62,7 +63,7 @@ class OnboardingFragment : Fragment() {
             }
 
             tvSkip.setOnClickListener {
-                findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
+                checkLoginState()
             }
 
         }
@@ -101,6 +102,17 @@ class OnboardingFragment : Fragment() {
             viewPager.setCurrentItem(currentPage, true)
         }
         else if(currentPage == images.size - 1) {
+            checkLoginState()
+        }
+    }
+
+    private fun checkLoginState() {
+        val sharedPref = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val loggedInUserEmail = sharedPref.getString("logged_in_user_email", null)
+
+        if (loggedInUserEmail != null) {
+            findNavController().navigate(R.id.action_onboardingFragment_to_homeFragment)
+        } else {
             findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
         }
     }

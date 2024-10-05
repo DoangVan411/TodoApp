@@ -54,4 +54,5 @@
     <string name="color">Category color</string>
     <string name="choose_icon">Choose icon</string>
     <string name="search">Search for task</string>
+    <string name="total">Total:</string>
 </resources>

@@ -29,7 +29,7 @@
         android:src="@drawable/checked"
         android:background="@color/white"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintHeight_percent="0.04"
+        app:layout_constraintHeight_percent="0.045"
         android:scaleType="fitXY"
 
         app:layout_constraintStart_toEndOf="@id/tvEditTask"
@@ -44,7 +44,7 @@
 
         android:src="@drawable/trash_bin"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintHeight_percent="0.04"
+        app:layout_constraintHeight_percent="0.045"
         android:background="@color/white"
         android:scaleType="fitXY"
 

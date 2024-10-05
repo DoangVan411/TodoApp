@@ -99,12 +99,17 @@ class HomeFragment : Fragment() {
         binding.tvViewAllCategories.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_categoryFragment)
         }
+
+        binding.ivCalendar.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_calendarFragment)
+        }
     }
 
     private fun setUpTaskListObserver() {
         homeViewModel.taskList.observe(viewLifecycleOwner) {tasks ->
             allTasks = tasks
             taskAdapter.submitList(tasks)
+            binding.tvTotal.text = "Total: ${allTasks.size}"
         }
     }
 
@@ -119,9 +124,11 @@ class HomeFragment : Fragment() {
     private fun filterTasksByCategory(categoryId: Int) {
         if (categoryId == -1) {
             taskAdapter.submitList(allTasks)
+            binding.tvTotal.text = "Total: ${allTasks.size}"
         } else {
             val filteredTasks = allTasks.filter { it.category == categoryId }
             taskAdapter.submitList(filteredTasks)
+            binding.tvTotal.text = "Total: ${filteredTasks.size}"
         }
     }
 

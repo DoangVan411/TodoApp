@@ -65,7 +65,7 @@ class InsertCategoryFragment : DialogFragment() {
 
         binding.rvColor.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val colorAdapter = ColorAdapter(colors) { color ->
-            binding.ivIcon.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+            binding.cvIcon.setCardBackgroundColor(ContextCompat.getColor(requireContext(), color))
             selectedColor = color
         }
         binding.rvColor.adapter = colorAdapter

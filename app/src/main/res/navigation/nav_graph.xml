@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_onboardingFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_onboardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -48,6 +51,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
     <dialog
         android:id="@+id/insertFragment"
@@ -94,4 +100,8 @@
             android:id="@+id/action_searchFragment_to_editFragment"
             app:destination="@id/editFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.todoapp.ui.calendar.CalendarFragment"
+        android:label="CalendarFragment" />
 </navigation>

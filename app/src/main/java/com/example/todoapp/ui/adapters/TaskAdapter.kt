@@ -22,12 +22,14 @@ class TaskAdapter(
         private val tvDescription = binding.tvDescription
         private val tvDueDate = binding.tvDueDate
         private val ivImportance = binding.ivStar
+        private val tvStatus = binding.tvStatus
 
         fun bind(task: Task) {
             tvTitle.text = task.title
             tvDescription.text = task.description
             val timeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
             tvDueDate.text = timeFormat.format(task.dueDate)
+            tvStatus.text = task.status.displayName
 
             // Thiết lập icon cho tầm quan trọng
             if (task.importance) {
