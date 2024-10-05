@@ -1,5 +1,6 @@
 package com.example.todoapp.ui.login
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
 import com.example.todoapp.database.AppDatabase
 import com.example.todoapp.databinding.FragmentLoginBinding
+import com.example.todoapp.model.User
 import com.example.todoapp.repository.UserRepository
 
 class LoginFragment : Fragment() {
@@ -55,6 +57,7 @@ class LoginFragment : Fragment() {
             if(user != null) {
                 showToast("Login successful")
                 loginViewModel.resetLoginResult()
+                saveLoginState(user)
                 loginViewModel.loginResult.removeObservers(viewLifecycleOwner)
                 findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
             }
@@ -71,6 +74,14 @@ class LoginFragment : Fragment() {
             loginViewModel.login(email, password)
         } else {
             showToast("Fields cannot be blank.")
+        }
+    }
+
+    private fun saveLoginState(user: User) {
+        val sharedPref = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putString("logged_in_user_email", user.email)
+            apply()
         }
     }
 

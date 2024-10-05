@@ -19,7 +19,7 @@ class ColorAdapter(
     inner class ColorViewHolder(private val binding: ColorItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(color: Int) {
-            binding.colorView.setBackgroundColor(ContextCompat.getColor(binding.root.context, color))
+            binding.colorView.setCardBackgroundColor(ContextCompat.getColor(binding.root.context, color))
 
             // Thiết lập kích thước item view
             val scale = if (adapterPosition == selectedPosition) 0.85f else 1.0f // Kích thước khi chọn (thu nhỏ)
@@ -35,10 +35,6 @@ class ColorAdapter(
                 notifyItemChanged(selectedPosition)
             }
         }
-    }
-
-    fun getColorSelected(): Int? {
-        return selectedColor
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorViewHolder {

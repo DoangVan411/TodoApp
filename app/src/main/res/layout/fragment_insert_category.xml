@@ -62,20 +62,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ImageView
-        android:id="@+id/ivIcon"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvIcon"
         android:layout_width="0dp"
         android:layout_height="0dp"
 
-        android:background="@drawable/rounded_corner"
+        app:cardCornerRadius="10dp"
         app:layout_constraintHeight_percent="0.2"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintVertical_bias="0.09"
-        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvIcon"
         app:layout_constraintBottom_toTopOf="@id/btnCancel"
-        app:layout_constraintEnd_toStartOf="@id/btnIcon"/>
+        app:layout_constraintEnd_toStartOf="@id/btnIcon">
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        />
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnIcon"
@@ -88,9 +95,9 @@
         android:background="@drawable/button_custom"
         app:backgroundTint="@null"
         android:layout_marginStart="10dp"
-        app:layout_constraintStart_toEndOf="@id/ivIcon"
-        app:layout_constraintTop_toTopOf="@id/ivIcon"
-        app:layout_constraintBottom_toBottomOf="@id/ivIcon"
+        app:layout_constraintStart_toEndOf="@id/cvIcon"
+        app:layout_constraintTop_toTopOf="@id/cvIcon"
+        app:layout_constraintBottom_toBottomOf="@id/cvIcon"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
@@ -100,7 +107,7 @@
 
         app:layout_constraintVertical_bias="0.15"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintTop_toBottomOf="@id/ivIcon"
+        app:layout_constraintTop_toBottomOf="@id/cvIcon"
         app:layout_constraintBottom_toTopOf="@id/btnCancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

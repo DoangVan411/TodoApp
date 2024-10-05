@@ -109,6 +109,7 @@ class HomeFragment : Fragment() {
         homeViewModel.taskList.observe(viewLifecycleOwner) {tasks ->
             allTasks = tasks
             taskAdapter.submitList(tasks)
+            binding.tvTotal.text = "Total: ${allTasks.size}"
         }
     }
 
@@ -123,9 +124,11 @@ class HomeFragment : Fragment() {
     private fun filterTasksByCategory(categoryId: Int) {
         if (categoryId == -1) {
             taskAdapter.submitList(allTasks)
+            binding.tvTotal.text = "Total: ${allTasks.size}"
         } else {
             val filteredTasks = allTasks.filter { it.category == categoryId }
             taskAdapter.submitList(filteredTasks)
+            binding.tvTotal.text = "Total: ${filteredTasks.size}"
         }
     }
 
