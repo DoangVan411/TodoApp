@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.HomeFragment">
+
+    <ImageView
+        android:id="@+id/ivMenu"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:src="@drawable/menu"
+        app:layout_constraintHeight_percent="0.035"
+        app:layout_constraintDimensionRatio="1:1"
+
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+
+        app:layout_constraintHeight_percent="0.04"
+
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_weight="1"
+
+            android:src="@drawable/checkbox"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:text="@string/to_do"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_blue"
+
+            android:layout_marginStart="5dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivSearch"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:src="@drawable/search"
+
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHeight_percent="0.035"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.5"
+
+        app:layout_constraintStart_toEndOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"/>
+
+    <ImageView
+        android:id="@+id/ivCalendar"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:src="@drawable/calendar"
+
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHeight_percent="0.035"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.9"
+
+        app:layout_constraintStart_toEndOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"/>
+
+
+    <TextView
+        android:id="@+id/tvCategories"
+        android:text="@string/categories"
+
+        style="@style/CustomTextViewStyle"
+        android:textSize="18sp"
+        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/tvViewAllCategories"
+        android:text="@string/view"
+
+        style="@style/CustomTextViewStyle"
+        android:textSize="14sp"
+
+        app:layout_constraintVertical_bias="0.035"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintVertical_bias="0.03"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCategories"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"/>
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvCategory"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd">
+        <TextView
+            android:id="@+id/tvAll"
+            style="@style/CustomTextViewStyle"
+            android:text="@string/all" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/dark_blue"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/tvImportance"
+            style="@style/CustomTextViewStyle"
+            android:text="@string/importance"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTotal"
+        style="@style/CustomTextViewStyle"
+        android:text="@string/total"
+
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toEndOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvCategory"
+        app:layout_constraintBottom_toTopOf="@id/rvTask"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTask"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintWidth_percent="0.92"
+
+        android:layout_marginVertical="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear2"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"/>
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:text="@string/add_new_task"
+        android:background="@drawable/button_corner"
+        app:backgroundTint="@null"
+
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintVertical_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

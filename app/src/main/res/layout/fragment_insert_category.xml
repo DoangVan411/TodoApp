@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.category.insert.InsertCategoryFragment">
+
+    <TextView
+        android:id="@+id/tvCreate"
+        style="@style/CustomTextViewStyle"
+        android:textSize="20sp"
+        android:text="@string/create_category"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnCancel"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dark_blue"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/tvCreate"
+        app:layout_constraintBottom_toTopOf="@id/btnCancel"/>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/CustomTextViewStyle"
+        android:text="@string/category_title"
+
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/tvCreate"
+        app:layout_constraintBottom_toTopOf="@id/btnCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/etTitle"
+        style="@style/CustomEditTextStyle"
+        android:hint="@string/enter_category_title"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintVertical_bias="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintBottom_toTopOf="@id/btnCancel"/>
+
+    <TextView
+        android:id="@+id/tvIcon"
+        style="@style/CustomTextViewStyle"
+        android:text="@string/icon"
+
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/etTitle"
+        app:layout_constraintBottom_toTopOf="@id/btnCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvIcon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:cardCornerRadius="10dp"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintVertical_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvIcon"
+        app:layout_constraintBottom_toTopOf="@id/btnCancel"
+        app:layout_constraintEnd_toStartOf="@id/btnIcon">
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_icon"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/montserrat"
+
+        android:background="@drawable/button_custom"
+        app:backgroundTint="@null"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/cvIcon"
+        app:layout_constraintTop_toTopOf="@id/cvIcon"
+        app:layout_constraintBottom_toBottomOf="@id/cvIcon"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvColor"
+        style="@style/CustomTextViewStyle"
+        android:text="@string/color"
+
+        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/cvIcon"
+        app:layout_constraintBottom_toTopOf="@id/btnCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvColor"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/tvColor"
+        app:layout_constraintBottom_toTopOf="@id/btnCancel"/>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:text="@string/cancel"
+        android:background="@drawable/button_custom"
+        app:backgroundTint="@null"
+        android:textColor="@color/dark_blue"
+
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnCreate"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:text="@string/create"
+        android:background="@drawable/button_corner"
+        app:backgroundTint="@null"
+        android:textColor="@color/white"
+
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintStart_toEndOf="@id/btnCancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.search.SearchFragment">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:src="@drawable/arrow_back"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintWidth_percent="0.13"
+        android:backgroundTint="@color/white"
+        android:scaleType="centerCrop"
+
+        app:layout_constraintTop_toTopOf="@id/svSearchTask"
+        app:layout_constraintBottom_toBottomOf="@id/svSearchTask"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/svSearchTask"/>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svSearchTask"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/button_custom"
+        android:hint="@string/search"
+        app:iconifiedByDefault="false"
+
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTask"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toBottomOf="@id/svSearchTask"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
