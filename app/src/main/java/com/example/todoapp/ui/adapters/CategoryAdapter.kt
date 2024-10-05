@@ -28,7 +28,6 @@ class CategoryAdapter (
     }
 
     private var selectedPosition = RecyclerView.NO_POSITION
-    private var selectedCategory: Category? = null
 
     inner class CategoryViewHolder(private val binding: CategoryItemBinding): RecyclerView.ViewHolder(binding.root) {
         val ivIcon = binding.ivCategoryIcon
@@ -54,7 +53,6 @@ class CategoryAdapter (
                 selectedCategoryId = category.id
                 notifyDataSetChanged()
                 selectedPosition = adapterPosition
-                selectedCategory = category
                 notifyDataSetChanged()
             }
         }
@@ -75,8 +73,8 @@ class CategoryAdapter (
     }
 
     // Hàm để lấy category đã chọn
-    fun getSelectedCategory(): Category? {
-        return selectedCategory
+    fun getSelectedCategoryId(): Int {
+        return selectedCategoryId
     }
 
     fun updateCategories(newCategories: List<Category>) {
