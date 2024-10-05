@@ -109,8 +109,8 @@ class InsertFragment : BottomSheetDialogFragment() {
             else -> null
         }
 
-        val category = categoryAdapter.getSelectedCategory()
-        insertViewModel.insertTask(1, title, description, importance, dueTime, category!!.id)
+        val categoryId = categoryAdapter.getSelectedCategoryId()
+        insertViewModel.insertTask(1, title, description, importance, dueTime, categoryId)
     }
 
 

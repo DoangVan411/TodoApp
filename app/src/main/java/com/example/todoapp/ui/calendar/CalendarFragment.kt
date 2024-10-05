@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.CalendarView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
@@ -62,6 +63,10 @@ class CalendarFragment : Fragment() {
         calendarViewModel.dateTask.observe(viewLifecycleOwner) {task ->
             Log.d("CalendarFragment", "Tasks for selected date: $task")
             taskAdapter.submitList(task)
+        }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         //set up categoryList Observer
