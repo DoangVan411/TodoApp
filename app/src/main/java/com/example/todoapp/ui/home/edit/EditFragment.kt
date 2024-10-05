@@ -3,6 +3,7 @@ package com.example.todoapp.ui.home.edit
 import android.app.AlertDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -138,13 +139,13 @@ class EditFragment : BottomSheetDialogFragment() {
             binding.cbNotImportant.isChecked -> false
             else -> null
         }
-        val category = categoryAdapter.getSelectedCategory()
+        val categoryId = categoryAdapter.getSelectedCategoryId()
 
         if(mode == 1) {
-            editViewModel.updateTask(taskId, title, description, importance, dueTime, category!!.id, Status.ON_GOING)
+            editViewModel.updateTask(taskId, title, description, importance, dueTime, categoryId, Status.ON_GOING)
         }
         else {
-            editViewModel.updateTask(taskId, title, description, importance, dueTime, category!!.id, Status.COMPLETED)
+            editViewModel.updateTask(taskId, title, description, importance, dueTime, categoryId, Status.COMPLETED)
         }
     }
 
