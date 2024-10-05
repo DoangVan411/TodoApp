@@ -44,7 +44,6 @@ class SearchFragment : Fragment() {
             findNavController().navigate(action)
         }, { categoryId ->
             val categoryColor = searchViewModel.categoryColor.value?.get(categoryId) ?: -1
-            Log.d("CATEGORY", categoryColor.toString())
             categoryColor
         })
 

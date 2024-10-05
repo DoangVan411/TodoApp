@@ -99,6 +99,10 @@ class HomeFragment : Fragment() {
         binding.tvViewAllCategories.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_categoryFragment)
         }
+
+        binding.ivCalendar.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_calendarFragment)
+        }
     }
 
     private fun setUpTaskListObserver() {
